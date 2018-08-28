@@ -53,3 +53,6 @@ Route::get('staf','HomeController@staf');
 Route::get('kurikulum.delete/{id}','SekolahController@deletekurikulum');
 Route::get('kurikulum.edit/{id}','SekolahController@show_kurikulum');
 Route::post('savekurikulum/{id}','SekolahController@savekurikulum');
+Route::get('users/{id}', function ($id) {
+    // route baru
+});
