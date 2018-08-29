@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+
+use App\struktur;
 
 class User extends Authenticatable
 {
@@ -26,4 +29,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+}
+class User_model extends Model
+{
+    public function struktur(){
+        return $this->belongstomany(struktur::class);
+    }
 }

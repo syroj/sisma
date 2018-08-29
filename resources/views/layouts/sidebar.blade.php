@@ -14,11 +14,11 @@
                 <i class="nav-icon fa fa-home"></i>Data Sekolah</a>
              <ul class="nav-dropdown-items">
               <li class="nav-item">
-                  <a class="nav-link" href="{{url('data_struktur')}}">
+                  <a class="nav-link" href="{{url('struktur')}}">
                     <i class="nav-icon fa fa-sitemap"></i> Struktur Organisasi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('data_staf')}}">
+                  <a class="nav-link" href="{{url('staf')}}">
                     <i class="nav-icon fa fa-users"></i> Staf</a>
                 </li>
                 <li class="nav-item">

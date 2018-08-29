@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\status;
+use App\role;
+
 
 class AdminController extends Controller
 {
@@ -45,5 +48,9 @@ class AdminController extends Controller
 	public function deleterole($id){
 		$delete=role::where('id',$id)->delete();
 		return redirect('/setting');
+	}
+	// struktur
+	public function struktur(){
+		
 	}
 }

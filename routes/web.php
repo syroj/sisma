@@ -41,6 +41,8 @@ Route::post('sekolah_add','SekolahController@AddSekolah');
 Route::get('editsekolah/{id}','SekolahController@editsekolah');
 Route::post('savesekolah/{id}','SekolahController@savesekolah');
 Route::get('deletesekolah/{id}','SekolahController@deletesekolah');
+// struktur organisasi
+Route::get('data_struktur','AdminController@struktur');
 // siswa
 Route::get('api/siswa','SiswaController@datasiswa');
 Route::get('siswa','SiswaController@index');
@@ -53,3 +55,7 @@ Route::get('staf','HomeController@staf');
 Route::get('kurikulum.delete/{id}','SekolahController@deletekurikulum');
 Route::get('kurikulum.edit/{id}','SekolahController@show_kurikulum');
 Route::post('savekurikulum/{id}','SekolahController@savekurikulum');
+// struktur
+Route::get('struktur','StafController@index');
+// dataguru
+Route::get('data_guru','GuruController@index');
