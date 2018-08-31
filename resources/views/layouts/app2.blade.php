@@ -18,6 +18,7 @@ Application by: syroj
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SISMA Ma Ali Maksum</title>
     <!-- Icons-->
+    
     <link href="{{asset('src')}}/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="{{asset('src')}}/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="{{asset('src')}}/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -62,8 +63,8 @@ Application by: syroj
       </ul>
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item dropdown" style="margin-right: 15px;">
-          <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span><i class="icon-user"></i></span>
-            <img class="img-avatar" src="img/avatars/6.jpg" alt="{{Auth::user()->name}}">
+          <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span><i class="icon-user"></i ></span>
+            {{Auth::user()->name}}
           </a>
           <div class="dropdown-menu dropdown-menu-right">
             <div class="dropdown-header text-center">
@@ -127,7 +128,7 @@ Application by: syroj
     <!-- CoreUI and necessary plugins-->
     
     <script type="text/javascript" src="{{asset('jquery')}}/jquery-3.3.1.js"></script>
-    <!-- <script src="{{asset('src')}}/node_modules/jquery/dist/jquery.min.js"></script> -->
+    <script src="{{asset('src')}}/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="{{asset('src')}}/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="{{asset('src')}}/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{asset('src')}}/node_modules/pace-progress/pace.min.js"></script>
