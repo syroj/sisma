@@ -59,3 +59,5 @@ Route::post('savekurikulum/{id}','SekolahController@savekurikulum');
 Route::get('struktur','StafController@index');
 // dataguru
 Route::get('data_guru','GuruController@index');
+// datasiswa
+Route::get('data_siswa','SiswaController@index');

@@ -17,6 +17,7 @@ class CreateAsalSekolahsTable extends Migration
             $table->increments('id');
             $table->integer('siswa_id')->unsigned();
             $table->foreign('siswa_id')->references('id')->on('siswas');
+            $table->string('asal_sekolah')->nullable();
             $table->string('dusun');
             $table->string('desa');
             $table->string('kecamatan');

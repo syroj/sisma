@@ -29,9 +29,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-}
-class User_model extends Model
-{
+    
     public function struktur(){
         return $this->belongstomany(struktur::class);
     }
