@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <!--
+  Template by:
 * CoreUI - Free Bootstrap Admin Template
 * @version v2.0.0
 * @link https://coreui.io
 * Copyright (c) 2018 creativeLabs Łukasz Holeczek
 * Licensed under MIT (https://coreui.io/license)
+Application by: syroj
 -->
 
 <html lang="en">
@@ -23,8 +25,11 @@
     <!-- Main styles for this application-->
     <link href="{{asset('src')}}/css/style.css" rel="stylesheet">
     <link href="{{asset('src')}}/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+    <!-- datatable -->
     <link href="{{asset('dt')}}/datatables.css" rel="stylesheet">
-
+    <link href="{{asset('dt/DataTables/css')}}/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="{{asset('dt/DataTables/css')}}/jquery.dataTables.css" rel="stylesheet">
+    <link href="{{asset('dt/DataTables/css')}}/dataTables.jqueryui.css" rel="stylesheet">
   </head>
   @guest
   <body class="app flex-row align-items-center">
@@ -120,7 +125,9 @@
       </div>
   @endguest
     <!-- CoreUI and necessary plugins-->
-    <script src="{{asset('src')}}/node_modules/jquery/dist/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="{{asset('jquery')}}/jquery-3.3.1.js"></script>
+    <!-- <script src="{{asset('src')}}/node_modules/jquery/dist/jquery.min.js"></script> -->
     <script src="{{asset('src')}}/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="{{asset('src')}}/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{asset('src')}}/node_modules/pace-progress/pace.min.js"></script>
@@ -133,5 +140,9 @@
     <script src="{{asset('src')}}/js/main.js"></script>
     <!-- datatable -->
     <script type="text/javascript" src="{{asset('dt')}}/datatables.js"></script>
+    <script type="text/javascript" src="{{asset('dt/DataTables/js')}}/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="{{asset('dt/DataTables/js')}}/dataTables.bootstrap.js"></script>
+    <!-- script data table siswa dan guru-->
+    @stack('scripts')
   </body>
 </html>

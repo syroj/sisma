@@ -61,3 +61,4 @@ Route::get('struktur','StafController@index');
 Route::get('data_guru','GuruController@index');
 // datasiswa
 Route::get('data_siswa','SiswaController@index');
+Route::get('api/siswa','SiswaController@datasiswa')->name('api/datasiswa');

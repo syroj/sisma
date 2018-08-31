@@ -12,4 +12,7 @@ class status extends Model
     public function tahun_ajaran(){
     	return $this->hasmany(tahun_ajaran::class);
     }
+    public function siswa(){
+        return $this->hasmany(siswa::class);
+    }
 }

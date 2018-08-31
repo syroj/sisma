@@ -15,4 +15,7 @@ class siswa extends Model
     public function asal_sekolah(){
         return $this->hasmany(asal_sekolah::class);
     }
+    public function status(){
+        return $this->belongsto(status::class);
+    }
 }
