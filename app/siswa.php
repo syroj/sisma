@@ -18,4 +18,7 @@ class siswa extends Model
     public function status(){
         return $this->belongsto(status::class);
     }
+    public function keluarga(){
+        return $this->hasmany(keluarga::class);
+    }
 }

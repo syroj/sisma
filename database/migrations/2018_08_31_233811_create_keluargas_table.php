@@ -20,7 +20,9 @@ class CreateKeluargasTable extends Migration
             $table->string('nama');
             $table->string('status');
             $table->string('agama');
+            $table->string('pekerjaan')->nullable();
             $table->string('email');
+            $table->string('penghasilan')->nullable();
             $table->string('tlp');
             $table->string('alamat');
             $table->timestamps();

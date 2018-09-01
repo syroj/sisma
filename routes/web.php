@@ -60,5 +60,6 @@ Route::get('struktur','StafController@index');
 // dataguru
 Route::get('data_guru','GuruController@index');
 // datasiswa
-Route::get('data_siswa','SiswaController@index');
-Route::get('api/siswa','SiswaController@datasiswa')->name('api/datasiswa');
+Route::get('data_siswa','SiswaController@index')->name('data_siswa');
+// Route::get('api/siswa','SiswaController@datasiswa')->name('api/datasiswa');
+Route::post('create_siswa','SiswaController@SiswaBaru');

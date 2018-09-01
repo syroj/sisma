@@ -13,6 +13,6 @@ class status extends Model
     	return $this->hasmany(tahun_ajaran::class);
     }
     public function siswa(){
-        return $this->hasmany(siswa::class);
+        return $this->hasmany('App\siswa','id','status_id');
     }
 }
