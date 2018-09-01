@@ -22,6 +22,7 @@ class CreateSiswasTable extends Migration
             $table->string('nama');
             $table->string('tmp_lahir');
             $table->string('tgl_lahir');
+            $table->string('agama');
             $table->integer('anak_ke');
             $table->integer('jml_saudara');
             $table->string('photo')->nullable();
