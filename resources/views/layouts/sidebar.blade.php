@@ -26,7 +26,7 @@
                     <i class="nav-icon fa fa-user-circle"></i> Guru</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="data_siswa">
+                  <a class="nav-link" href="{{url('data_siswa')}}">
                     <i class="nav-icon fa fa-vcard"></i> Siswa</a>
                 </li>
                 <li class="nav-item">

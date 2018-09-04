@@ -63,3 +63,6 @@ Route::get('data_guru','GuruController@index');
 Route::get('data_siswa','SiswaController@index')->name('data_siswa');
 // Route::get('api/siswa','SiswaController@datasiswa')->name('api/datasiswa');
 Route::post('create_siswa','SiswaController@SiswaBaru');
+Route::get('detail/siswa/{id}','SiswaController@ProfilSiswa');
+Route::get('edit/siswa/{id}','SiswaController@EditSiswa');
+Route::post('edit/siswa/{id}','SiswaController@SaveEditSiswa');

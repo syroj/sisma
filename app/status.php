@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\siswa;
 
 class status extends Model
 {
@@ -13,6 +14,6 @@ class status extends Model
     	return $this->hasmany(tahun_ajaran::class);
     }
     public function siswa(){
-        return $this->hasmany('App\siswa','id','status_id');
+        return $this->hasmany(siswa::class);
     }
 }

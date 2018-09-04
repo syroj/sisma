@@ -43,11 +43,13 @@
                             <td>{{$s->nisn}}</td>
                             <td>{{$s->tmp_lahir}}, {{$s->tgl_lahir}} </td>
                             <td>X IPA A</td>
-                            @if(($s->status_id)!=null)
-                            <td>{{$s->status->status}}</td>
+                            <td>
+                            @if(($s->status_id!=null))
+                            {{$s->status->status}}
                             @else
-                            <td>Inaktif</td>                            
+                            Undefined status
                             @endif
+                            </td>
                             <td>
                                 <a href="{{url('detail/siswa')}}/{{$s->id}}" class="btn btn-sm btn-primary"><span><i class="fa fa-search"></i></span></a>
                                 <a href="{{url('edit/siswa')}}/{{$s->id}}" class="btn btn-sm btn-success"><span><i class="fa fa-pencil"></i></span></a>
@@ -80,13 +82,22 @@
                                     <td>No KK</td>
                                     <td><input type="text" name="no_kk" class="form-control"></td>
                                     <td>NIK</td>
-                                    <td><input type="text" name="nik" class="form-control"></td>
+                                    <td colspan="3"><input type="text" name="nik" class="form-control"></td>
+                                    
+                                </tr>
+                                <tr>
                                     <td>TTL</td>
                                     <td>
-                                        <div class="row auto">
-                                            <input type="text" name="tmp_lahir" class="form-control col-6" placeholder="Tempat Lahir" style="margin-left:5%;">
-                                            <input type="text" name="tgl_lahir" class="form-control col-5" placeholder="Tanggal Lahir">
-                                        </div>
+                                        <input type="text" name="tmp_lahir" class="form-control" placeholder="Tempat Lahir">
+                                    </td>
+                                    <td>Tanggal Lahir</td>
+                                    <td><input type="text" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir"></td>
+                                    <td>Jenis Kelamin</td>
+                                    <td>
+                                        <select name="gender" class="form-control">
+                                        <option value="Pria">Pria</option>
+                                        <option value="Wanita">Wanita</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -199,7 +210,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">Nama Sekolah</td>
-                                    <td colspan="4"><input type="text" name="nama_sekolah" class="form-control"></td>
+                                    <td colspan="4"><input type="text" name="asal_sekolah" class="form-control"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="6">Alamat Sekolah</td>
