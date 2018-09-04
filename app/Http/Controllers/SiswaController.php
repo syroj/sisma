@@ -136,22 +136,20 @@ class SiswaController extends Controller
         $count_wali=keluarga::where('siswa_id',$id)->where('status','like','wali')->count();
         $count_alamat=alamat::where('siswa_id',$id)->count();
         $count_asal_sekolah=asal_sekolah::where('siswa_id',$id)->count();
-                
-        $data_siswa=[
-            'nama'=>$request->nama,
-            'nis'=>$request->nis,
-            'nisn'=>$request->nisn,
-            'no_kk'=>$request->no_kk,
-            'nik'=>$request->nik,
-            'agama'=>$request->agama,
-            'gender'=>$request->gender,
-            'tmp_lahir'=>$request->tmp_lahir,
-            'tgl_lahir'=>$request->tgl_lahir,
-            'jml_saudara'=>$request->jml_saudara,
-            'anak_ke'=>$request->anak_ke
-        ];
-
-        if ($request->nama_ayah && $request->pekerjaan_ayah && $request->agama_ayah && $request->telp_ayah && $request->email_ayah && $request->penghasilan_ayah && $request->alamat_ayah != null) {
+        
+            $data_siswa=[
+                'nama'=>$request->nama,
+                'nis'=>$request->nis,
+                'nisn'=>$request->nisn,
+                'no_kk'=>$request->no_kk,
+                'nik'=>$request->nik,
+                'agama'=>$request->agama,
+                'gender'=>$request->gender,
+                'tmp_lahir'=>$request->tmp_lahir,
+                'tgl_lahir'=>$request->tgl_lahir,
+                'jml_saudara'=>$request->jml_saudara,
+                'anak_ke'=>$request->anak_ke
+            ];
             $data_ayah=[
                 'nama'=>$request->nama_ayah,
                 'pekerjaan'=>$request->pekerjaan_ayah,
@@ -162,17 +160,6 @@ class SiswaController extends Controller
                 'alamat'=>$request->alamat_ayah,
                 'status'=>'Ayah'
             ];
-            if ($count_ayah == 0) {
-                $siswa=siswa::findorfail($id);
-                $ayah=$siswa->keluarga()->create($data_ayah); 
-            } else {
-               $ayah=keluarga::where('siswa_id',$id)->where('status','like','Ayah')->update($data_ayah);
-            }
-        }else{
-            return redirect('edit/siswa/'.$id)->with(['status'=>'Data Orang Tua Wajib Diisi !']);
-        }
-        
-        if ($request->nama_ibu && $request->pekerjaan_ibu && $request->agama_ibu && $request->telp_ibu && $request->email_ibu && $request->penghasilan_ibu && $request->alamat_ibu != null) {
             $data_ibu=[
                 'nama'=>$request->nama_ibu,
                 'pekerjaan'=>$request->pekerjaan_ibu,
@@ -183,15 +170,41 @@ class SiswaController extends Controller
                 'alamat'=>$request->alamat_ibu,
                 'status'=>'Ibu'
             ];
+            $data_asalSekolah=[
+                'asal_sekolah'=>$request->asal_sekolah,
+                'dusun'=>$request->dusun_sekolah,
+                'desa'=>$request->desa_sekolah,
+                'kecamatan'=>$request->kecamatan_sekolah,
+                'kabupaten'=>$request->kabupaten_sekolah,
+                'provinsi'=>$request->provinsi_sekolah,
+                'kode_pos'=>$request->kode_pos_sekolah,
+            ];
+            $alamat_siswa=[
+                'dusun' =>$request->dusun_siswa,
+                'desa' =>$request->desa_siswa,
+                'kecamatan' =>$request->kecamatan_siswa,
+                'kabupaten' =>$request->kabupaten_siswa,
+                'provinsi' =>$request->provinsi_siswa,
+                'kode_pos'=>$request->kode_pos_siswa,
+            ];
+            // update data siswa
+            $siswa=siswa::where('id',$id)->update($data_siswa);                     
+            // update data ayah
+            if ($count_ayah == 0) {
+                $siswa=siswa::findorfail($id);
+                $ayah=$siswa->keluarga()->create($data_ayah); 
+            } else {
+               $ayah=keluarga::where('siswa_id',$id)->where('status','like','Ayah')->update($data_ayah);
+            }
+            // update data ibu
             if ($count_ibu == 0) {
                 $siswa=siswa::findorfail($id);
                 $ibu=$siswa->keluarga()->create($data_ibu); 
             } else {
                $ibu=keluarga::where('siswa_id',$id)->where('status','like','ibu')->update($data_ibu);
             }
-        }else{
-            return redirect('edit/siswa/'.$id)->with(['status'=>'Data Orang Tua Wajib Diisi !']);
-        }
+
+            // update data wali
         if ($request->nama_wali && $request->pekerjaan_wali && $request->agama_wali && $request->telp_wali && $request->email_wali && $request->penghasilan_wali && $request->alamat_wali != null) {
             $data_wali=[
                 'nama'=>$request->nama_wali,
@@ -209,59 +222,40 @@ class SiswaController extends Controller
             } else {
                $wali=keluarga::where('siswa_id',$id)->where('status','like','wali')->update($data_wali);
             }
-        }
-        
-        $data_asalSekolah=[
-            'asal_sekolah'=>$request->asal_sekolah,
-            'dusun'=>$request->dusun_sekolah,
-            'desa'=>$request->desa_sekolah,
-            'kecamatan'=>$request->kecamatan_sekolah,
-            'kabupaten'=>$request->kabupaten_sekolah,
-            'provinsi'=>$request->provinsi_sekolah,
-            'kode_pos'=>$request->kode_pos_sekolah,
-        ];
-        $alamat_siswa=[
-            'dusun' =>$request->dusun_siswa,
-            'desa' =>$request->desa_siswa,
-            'kecamatan' =>$request->kecamatan_siswa,
-            'kabupaten' =>$request->kabupaten_siswa,
-            'provinsi' =>$request->provinsi_siswa,
-            'kode_pos'=>$request->kode_pos_siswa,
-        ];
-        
-        $siswa=siswa::where('id',$id)->update($data_siswa);        
-        
-        // update data ayah
-        if ($count_ayah == 0) {
-            $siswa=siswa::findorfail($id);
-            $ayah=$siswa->keluarga()->create($data_ayah); 
-        } else {
-           $ayah=keluarga::where('siswa_id',$id)->where('status','like','ayah')->update($data_ayah);
-        }
-        // update data ibu
-        if ($count_ibu == 0) {
-            $siswa=siswa::findorfail($id);
-            $ibu=$siswa->keluarga()->create($data_ibu); 
-        } else {
-           $ibu=keluarga::where('siswa_id',$id)->where('status','like','ibu')->update($data_ibu);
-        }
-
-        // update alamat
+        } 
+        //  update data sekolah asal
+            if ($count_asal_sekolah == 0) {
+                $siswa=siswa::findorfail($id);
+                $asal_sekolah=$siswa->asal_sekolah()->create($data_asalSekolah); 
+            } else {
+               $asal_sekolah=asal_sekolah::where('siswa_id',$id)->update($data_asalSekolah);
+            }
+        // update alamat siswa
         if ($count_alamat == 0) {
             $siswa=siswa::findorfail($id);
             $alamat=$siswa->alamat()->create($alamat_siswa); 
         } else {
            $alamat=alamat::where('siswa_id',$id)->update($alamat_siswa);
         }
-
-        // update asal sekolah
-        if ($count_asal_sekolah == 0) {
-            $siswa=siswa::findorfail($id);
-            $asal_sekolah=$siswa->asal_sekolah()->create($data_asalSekolah); 
-        } else {
-           $asal_sekolah=asal_sekolah::where('siswa_id',$id)->update($data_asalSekolah);
-        }
-        
+     
         return redirect('detail/siswa/'.$id)->with(['status'=>'Data Berhasil diperbaharui']);     
+    }
+    public function deleteOrtu($id){
+        $ortu=keluarga::findorfail($id);
+        if ($ortu!=null) {
+            keluarga::where('id',$id)->delete($ortu);
+            return back()->with('status','Data berhasil dihapus');
+        } else {
+            return back()->with('status','Data Tidak Ditemukan, Gagal Menghapus data');
+        }
+    }
+    public function deleteSekolah($id){
+        $sekolah=asal_sekolah::findorfail($id);
+        if ($sekolah !=null) {
+            asal_sekolah::where('id',$id)->delete($sekolah);
+            return back()->with('status','Data berhasil dihapus');           
+        } else {
+            return back()->with('status','Data Tidak Ditemukan, Gagal Menghapus data');            
+        }
     }
 }

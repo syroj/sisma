@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
  if (Auth::guard()->check()) {
 	return redirect('home');
@@ -66,3 +55,5 @@ Route::post('create_siswa','SiswaController@SiswaBaru');
 Route::get('detail/siswa/{id}','SiswaController@ProfilSiswa');
 Route::get('edit/siswa/{id}','SiswaController@EditSiswa');
 Route::post('edit/siswa/{id}','SiswaController@SaveEditSiswa');
+Route::get('delete/ortu/{id}','SiswaController@deleteOrtu');
+Route::get('delete/sekolah/{id}','SiswaController@deleteSekolah');

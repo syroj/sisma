@@ -17,7 +17,7 @@
                 <a class="nav-link active" data-toggle="tab" href="#profile" role="tab" aria-controls="home"><span><i class="fa fa-vcard"></i></span> Profil</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#akademik" role="tab" aria-controls="profile"><span><i class="fa fa-edit"></i></span> Akademik</a>
+                <a class="nav-link" data-toggle="tab" href="#akademik" role="tab" aria-controls="profile"><span><i class="fa fa-book"></i></span> Akademik</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#kepesantrenan" role="tab" aria-controls="profile"><span><i class="fa fa-gears"></i></span> Kepesantrenan</a>
@@ -29,9 +29,12 @@
                 <div class="tab-pane active" id="profile" role="tabpanel">
                     <div class="row">
                         <div class="col-md-3">
-                            <table class="table">
+                            <table class="table table-striped table-bordered">
                                 <tr>
-                                    <td>
+                                    <td colspan="2" style="text-align:center;">{{$siswa->nama}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
                                     @if($siswa->photo != null)
                                     <img src="{{asset('/img/profile')}}/{{$siswa->photo}}" alt="" style="">
                                     @else
@@ -40,7 +43,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                <td>{{$siswa->nama}} <a href="" class="btn btn-sm btn-secondary pull-right"><span><i class="fa fa-camera"></i></span> Upload</a></td>
+                                <td>Edit Foto</td><td> <a href="" class="btn btn-sm btn-secondary pull-right"><span><i class="fa fa-camera"></i></span> Upload</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -94,11 +97,11 @@
                                     @endforeach
                                     </td>
                                 </tr>
-                                <th colspan="4">Data Orang Tua</th>
+                                <th colspan="4">Data Orang Tua dan Sekolah Asal</th>
                             @if(count($keluarga)>0)
                                 @foreach($keluarga as $kel)
                                 <tr>
-                                    <td colspan="4" style="text-align:center;"><b>Data {{$kel->status}} </b></td>
+                                    <td colspan="4" style="text-align:center;"><b>Data {{$kel->status}} </b> <a href="{{url('delete/ortu')}}/{{$kel->id}}" class="btn btn-sm btn-secondary pull-right"><span><i class="fa fa-trash"></i></span> Hapus</a> </td>
                                 </tr>
                                 <tr>
                                     <td>Nama</td>
@@ -126,13 +129,15 @@
                                 @endforeach
                                 @else
                                 <tr>
-                                <th colspan="4" style="text-align:center;" >Belum ada data Keluarga </br> <a href="{{url('/edit/siswa')}}/{{$siswa->id}}" class="btn btn-sm btn-secondary"><span><i class="fa fa-users"></i></span> Input Data</a> </th>
+                                <th colspan="4" style="text-align:center;" >Belum ada data Keluarga</br> <a href="{{url('/edit/siswa')}}/{{$siswa->id}}" class="btn btn-sm btn-secondary"><span><i class="fa fa-users"></i></span> Input Data</a> </th>
                                 </tr>
                             @endif
                             @if(count($asal_sekolah)>0)
                             @foreach($asal_sekolah as $asal_sekolah)
                             <tr>
-                            <th colspan="4" style="text-align:center;">Asal Sekolah</th>
+                            <th colspan="4" style="text-align:center;">Asal Sekolah
+                            <a href="{{url('delete/sekolah')}}/{{$asal_sekolah->id}}" class="btn btn-sm btn-secondary pull-right"><span><i class="fa fa-trash"></i></span> Hapus</a>
+                            </th>
                             </tr>
                             <tr>
                                 <td>Nama Sekolah</td>
@@ -147,6 +152,9 @@
                             </tr>
                             @endforeach
                             @else
+                            <tr>
+                                <th colspan="4" style="text-align:center;" >Belum ada data Sekolah </br> <a href="{{url('/edit/siswa')}}/{{$siswa->id}}" class="btn btn-sm btn-secondary"><span><i class="fa fa-bank"></i></span> Input Data</a> </th>
+                            </tr>
                             @endif
                             </table>
                         </div>

@@ -72,29 +72,29 @@
                                 <tr><th colspan="6">Data Pribadi</th></tr>
                                 <tr>
                                     <td>Nama</td>
-                                    <td><input type="text" name="nama" class="form-control"></td>
+                                    <td><input type="text" name="nama" class="form-control" required></td>
                                     <td>NIS</td>
-                                    <td><input type="text" name="nis" class="form-control" value="{{$nis}}" readonly="true"></td>
+                                    <td><input type="text" name="nis" class="form-control" required value="{{$nis}}" readonly="true"></td>
                                     <td>NISN</td>
-                                    <td><input type="text" name="nisn" class="form-control"></td>
+                                    <td><input type="text" name="nisn" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td>No KK</td>
-                                    <td><input type="text" name="no_kk" class="form-control"></td>
+                                    <td><input type="text" name="no_kk" class="form-control" required></td>
                                     <td>NIK</td>
-                                    <td colspan="3"><input type="text" name="nik" class="form-control"></td>
+                                    <td colspan="3"><input type="text" name="nik" class="form-control" required></td>
                                     
                                 </tr>
                                 <tr>
                                     <td>TTL</td>
                                     <td>
-                                        <input type="text" name="tmp_lahir" class="form-control" placeholder="Tempat Lahir">
+                                        <input type="text" name="tmp_lahir" class="form-control" required placeholder="Tempat Lahir">
                                     </td>
                                     <td>Tanggal Lahir</td>
-                                    <td><input type="text" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir"></td>
+                                    <td><input type="text" name="tgl_lahir" class="form-control" required placeholder="Tanggal Lahir"></td>
                                     <td>Jenis Kelamin</td>
                                     <td>
-                                        <select name="gender" class="form-control">
+                                        <select name="gender" class="form-control" required>
                                         <option value="Pria">Pria</option>
                                         <option value="Wanita">Wanita</option>
                                         </select>
@@ -102,11 +102,11 @@
                                 </tr>
                                 <tr>
                                     <td>Jumlah Saudara</td>
-                                    <td><input type="text" name="jml_saudara" class="form-control"></td>
+                                    <td><input type="text" name="jml_saudara" class="form-control" required></td>
                                     <td>Anak Ke</td>
-                                    <td><input type="text" name="anak_ke" class="form-control"></td>
+                                    <td><input type="text" name="anak_ke" class="form-control" required></td>
                                     <td>Agama</td>
-                                    <td><select name="agama" class="form-control">
+                                    <td><select name="agama" class="form-control" required>
                                         <option value="Islam">Islam</option>
                                         <option value="Katolik">Katolik</option>
                                         <option value="Protestan">Protestan</option>
@@ -123,64 +123,64 @@
                                 </tr>
                                 <tr>
                                     <td>Dusun</td>
-                                    <td><input type="text" name="dusun_siswa" class="form-control"></td>
+                                    <td><input type="text" name="dusun_siswa" class="form-control" required></td>
                                     <td>Desa</td>
-                                    <td><input type="text" name="desa_siswa" class="form-control"></td>
+                                    <td><input type="text" name="desa_siswa" class="form-control" required></td>
                                     <td>Kecamatan</td>
-                                    <td><input type="text" name="kecamatan_siswa" class="form-control"></td>
+                                    <td><input type="text" name="kecamatan_siswa" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td>Kabupaten</td>
-                                    <td><input type="text" name="kabupaten_siswa" class="form-control"></td>
+                                    <td><input type="text" name="kabupaten_siswa" class="form-control" required></td>
                                     <td>Provinsi</td>
-                                    <td><input type="text" name="provinsi_siswa" class="form-control"></td>
+                                    <td><input type="text" name="provinsi_siswa" class="form-control" required></td>
                                     <td>Kode Pos</td>
-                                    <td><input type="text" name="kode_pos_siswa" class="form-control"></td>
+                                    <td><input type="text" name="kode_pos_siswa" class="form-control" required></td>
                                 </tr>
 
 
                                 <tr><th colspan="6">Data Ayah</th></tr>
                                 <tr>
                                     <td>Nama Ayah</td>
-                                    <td><input type="text" name="nama_ayah" class="form-control"></td>
+                                    <td><input type="text" name="nama_ayah" class="form-control" required></td>
                                     <td>Pekerjaan</td>
-                                    <td><input type="text" name="pekerjaan_ayah" class="form-control"></td>
+                                    <td><input type="text" name="pekerjaan_ayah" class="form-control" required></td>
                                     <td>Agama</td>
-                                    <td><input type="text" name="agama_ayah" class="form-control"></td>
+                                    <td><input type="text" name="agama_ayah" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td>No. Telp</td>
-                                    <td><input type="text" name="telp_ayah" class="form-control"></td>
+                                    <td><input type="text" name="telp_ayah" class="form-control" required></td>
                                     <td>Email ayah</td>
-                                    <td><input type="text" name="email_ayah" class="form-control"></td>
+                                    <td><input type="text" name="email_ayah" class="form-control" required></td>
                                     <td>Penghasilan ayah</td>
-                                    <td><input type="text" name="penghasilan_ayah" class="form-control"></td>
+                                    <td><input type="text" name="penghasilan_ayah" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-                                    <td colspan="5"><textarea name="alamat_ayah" class="form-control"></textarea></td>
+                                    <td colspan="5"><textarea name="alamat_ayah" class="form-control" required></textarea></td>
                                 </tr>
                                 
                                 <tr><th colspan="6">Data ibu</th></tr>
                                 <tr>
                                     <td>Nama ibu</td>
-                                    <td><input type="text" name="nama_ibu" class="form-control"></td>
+                                    <td><input type="text" name="nama_ibu" class="form-control" required></td>
                                     <td>Pekerjaan</td>
-                                    <td><input type="text" name="pekerjaan_ibu" class="form-control"></td>
+                                    <td><input type="text" name="pekerjaan_ibu" class="form-control" required></td>
                                     <td>Agama</td>
-                                    <td><input type="text" name="agama_ibu" class="form-control"></td>
+                                    <td><input type="text" name="agama_ibu" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td>No. Telp</td>
-                                    <td><input type="text" name="telp_ibu" class="form-control"></td>
+                                    <td><input type="text" name="telp_ibu" class="form-control" required></td>
                                     <td>Email ibu</td>
-                                    <td><input type="text" name="email_ibu" class="form-control"></td>
+                                    <td><input type="text" name="email_ibu" class="form-control" required></td>
                                     <td>Penghasilan ibu</td>
-                                    <td><input type="text" name="penghasilan_ibu" class="form-control"></td>
+                                    <td><input type="text" name="penghasilan_ibu" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-                                    <td colspan="5"><textarea name="alamat_ibu" class="form-control"></textarea></td>
+                                    <td colspan="5"><textarea name="alamat_ibu" class="form-control" required></textarea></td>
                                 </tr>
 
                                 <tr><th colspan="6">Data wali</th></tr>
@@ -210,26 +210,26 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">Nama Sekolah</td>
-                                    <td colspan="4"><input type="text" name="asal_sekolah" class="form-control"></td>
+                                    <td colspan="4"><input type="text" name="asal_sekolah" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td colspan="6">Alamat Sekolah</td>
                                 </tr>
                                 <tr>
                                     <td>Dusun</td>
-                                    <td><input type="text" name="dusun_sekolah" class="form-control"></td>
+                                    <td><input type="text" name="dusun_sekolah" class="form-control" required></td>
                                     <td>Desa</td>
-                                    <td><input type="text" name="desa_sekolah" class="form-control"></td>
+                                    <td><input type="text" name="desa_sekolah" class="form-control" required></td>
                                     <td>Kecamatan</td>
-                                    <td><input type="text" name="kecamatan_sekolah" class="form-control"></td>
+                                    <td><input type="text" name="kecamatan_sekolah" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td>Kabupaten</td>
-                                    <td><input type="text" name="kabupaten_sekolah" class="form-control"></td>
+                                    <td><input type="text" name="kabupaten_sekolah" class="form-control" required></td>
                                     <td>Provinsi</td>
-                                    <td><input type="text" name="provinsi_sekolah" class="form-control"></td>
+                                    <td><input type="text" name="provinsi_sekolah" class="form-control" required></td>
                                     <td>Kode Pos</td>
-                                    <td><input type="text" name="kode_pos_sekolah" class="form-control"></td>
+                                    <td><input type="text" name="kode_pos_sekolah" class="form-control" required></td>
                                 </tr>
                                 <tr>
                                     <td colspan="6">

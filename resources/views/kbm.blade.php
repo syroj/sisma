@@ -43,7 +43,7 @@
 		              		<tr>
 		              			<td>Kurikulum</td>
 		              			<td>
-		              				<select class="form-control" name="kurikulum_id">
+		              				<select class="form-control" name="kurikulum_id" required>
 		              					<option>Pilih Kurikulum</option>
 		              				@foreach($kurikulum as $r)
 		              					<option value="{{$r->id}}">{{$r->nama}}</option>
@@ -51,13 +51,13 @@
 		              				</select>
 		              			</td>
 		              			<td>Nama</td>
-		              			<td><input type="text" name="nama" class="form-control" placeholder="cth: 2010/2011"></td>
+		              			<td><input type="text" name="nama" class="form-control" placeholder="cth: 2010/2011" required></td>
 		              		</tr>
 		              		<tr>
 		              			<td>Tanggal Mulai</td>
-		              			<td><input type="text" name="tgl_mulai" placeholder="cth: 22-08-2019" class="form-control"></td>
+		              			<td><input type="text" name="tgl_mulai" placeholder="cth: 22-08-2019" class="form-control" required></td>
 		              			<td>Tanggal Selesai</td>
-		              			<td><input type="text" name="tgl_selesai" placeholder="cth: 22-08-2019" class="form-control"></td>
+		              			<td><input type="text" name="tgl_selesai" placeholder="cth: 22-08-2019" class="form-control" required></td>
 		              		</tr>
 		              		<tr>
 		              			<td colspan="4">
@@ -98,7 +98,7 @@
 			              	</table>
 	              		</div>
 	              		<div class="col-md-3">
-	              			<table class="table table-bordered" >
+	              			<table class="table table-bordered" id="ta" >
 	              				<thead style="text-align: center;">
 	              					<th>Smester Aktif</th>
 	              				</thead>
@@ -128,15 +128,16 @@
 	              		?>
 	              		<div class="col col-8">
 	              		@if(count($kurikulum)>0)
-			              	<table class="table table-bordered table-sm">
+			              	<table class="table table-bordered table-sm" id="tab_kurikulum" style="width:100%;">
 			              		<thead>
 				              		<th>No</th>
 				              		<th>Kurikulum</th>
 				              		<td>Deskripsi</td>
 				              		<th>Action</th>
 			              		</thead>
-			              		@foreach($kurikulum as $k)
 			              		<tbody>
+			              		@foreach($kurikulum as $k)
+								<tr>
 			              			<td>{{$x++}}</td>
 			              			<td>{{$k->nama}}</td>
 			              			<td>{{$k->deskripsi}}</td>
@@ -144,8 +145,9 @@
 		              					<a href="{{url('kurikulum.edit')}}/{{$k->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
 		              					<a href="{{url('kurikulum.delete')}}/{{$k->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 			              			</td>
+								</tr>
+								@endforeach
 			              		</tbody>
-			              		@endforeach
 			              	</table>
 		              	@else
 		              	<h3>Belum ada data</h3>
@@ -157,7 +159,7 @@
 			              		<table class="table table-bordered">
 			              			<tr>
 			              				<td>Kurikulum</td>
-			              				<td><input type="text" name="nama" class="form-control" placeholder="Nama Kurikulum"></td>
+			              				<td><input type="text" name="nama" class="form-control" placeholder="Nama Kurikulum" required></td>
 			              			</tr>
 			              			<tr>
 			              				<td>Deskripsi</td>
@@ -193,3 +195,10 @@
 		</div>		
 </div>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+	$(document).ready(function(){
+		// $('#tab_kurikulum').DataTable();
+	});
+</script>
+@endpush
