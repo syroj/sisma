@@ -54,6 +54,13 @@ class AdminController extends Controller
 	public function struktur()
 	{
 		$struktur=struktur::all();
-		return view('struktur',compact($struktur));
+		// dd($struktur);
+		return view('struktur',compact('struktur',$struktur));
+	}
+	public function addStruktur(Request $request)
+	{
+		$data=$request->all();
+		struktur::create($data);
+		return back()->with('status','Data berhasil Disimpan');
 	}
 }

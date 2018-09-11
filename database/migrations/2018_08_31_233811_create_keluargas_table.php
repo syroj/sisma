@@ -15,8 +15,7 @@ class CreateKeluargasTable extends Migration
     {
         Schema::create('keluargas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('siswa_id')->unsign();
-            $table->foreign('siswa_id')->references('id')->on('siswas');
+            $table->integer('siswa_id')->unsign();  
             $table->string('nama');
             $table->string('status');
             $table->string('agama');

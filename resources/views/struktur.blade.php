@@ -34,7 +34,23 @@
                                         <th>Deskripsi</th>
                                         <th>Opsi</th>
                                     </thead>
-                                    <tbody id="struktur"></tbody>
+                                    <tbody id="struktur">
+                                        <?php $x=1;?>
+                                        @foreach($struktur as $s)
+                                        <tr>
+                                            <td>{{ $x++ }}</td>
+                                            <td>{{$s->posisi}}</td>
+                                            <td>{{$s->deskripsi}}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm btn-default"><span><i class="fa fa-search"></i></span></a>
+                                                <a href="#" class="btn btn-sm btn-default"><span><i class="fa fa-plus"></i></span></a>
+                                                <a href="#" class="btn btn-sm btn-default"><span><i class="fa fa-trash"></i></span></a>
+
+
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                             <div class="col-md-5">

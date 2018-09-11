@@ -37,6 +37,7 @@ Route::get('deletesekolah/{id}','SekolahController@deletesekolah');
 
 // struktur organisasi
 Route::get('struktur','AdminController@struktur');
+Route::post('tambah_struktur','AdminController@addStruktur');
 
 // siswa
 Route::get('api/siswa','SiswaController@datasiswa');

@@ -11,6 +11,6 @@ class SiswaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\siswa::class, 10)->create();
+        factory(App\siswa::class, 100)->create();
     }
 }
