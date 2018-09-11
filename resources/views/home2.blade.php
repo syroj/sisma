@@ -1,735 +1,512 @@
-@extends('layouts.app2')
+@extends('layouts.app1')
 @section('content')
-@include('layouts.sidebar')
-      <main class="main">
-        <!-- Breadcrumb-->
-        <div class="container-fluid" style="margin-top: 15px;">
-          <div class="animated fadeIn">
-            <div class="row">
-              <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-primary">
-                  <div class="card-body pb-0">
-                    <div class="btn-group float-right">
-                      <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="icon-settings"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Total</a>
-                        <a class="dropdown-item" href="#">Aktif</a>
-                        <a class="dropdown-item" href="#">Detail</a>
-                      </div>
-                    </div>
-                    <div class="text-value">{{$staf}}</div>
-                    <div>Total Staff</div>
-                  </div>
-                  <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                    <canvas class="chart" id="card-chart1" height="70"></canvas>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-info">
-                  <div class="card-body pb-0">
-                    <div class="btn-group float-right">
-                      <button class="btn btn-transparent p-0 dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-graduation-cap"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="">Total Siswa</a>
-                        <a class="dropdown-item" href="">Siswa Tidak Aktif</a>
-                        <a class="dropdown-item" href="">Alumni</a>
-                        <a class="dropdown-item" href="">Detail</a>
-                      </div>
-                    </div>
-                    <div class="text-value">{{$siswa}}</div>
-                    <div>Siswa Aktif</div>
-                  </div>
-                  <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                    <canvas class="chart" id="card-chart2" height="70"></canvas>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-warning">
-                  <div class="card-body pb-0">
-                    <div class="btn-group float-right">
-                      <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-trophy"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Prestasi</a>
-                        <a class="dropdown-item" href="#">Pelanggaran</a>
-                        <a class="dropdown-item" href="#">Detail</a>
-                      </div>
-                    </div>
-                    <div class="text-value">9.823</div>
-                    <div>Prestasi</div>
-                  </div>
-                  <div class="chart-wrapper mt-3" style="height:70px;">
-                    <canvas class="chart" id="card-chart3" height="70"></canvas>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-danger">
-                  <div class="card-body pb-0">
-                    <div class="btn-group float-right">
-                      <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-book"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Guru</a>
-                        <a class="dropdown-item" href="#">Siswa</a>
-                        <a class="dropdown-item" href="#">Jurnal Pembelajaran</a>
-                      </div>
-                    </div>
-                    <div class="text-value">9.823</div>
-                    <div>Presensi</div>
-                  </div>
-                  <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-                    <canvas class="chart" id="card-chart4" height="70"></canvas>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-            </div>
-            <!-- /.row-->
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-5">
-                    <h4 class="card-title mb-0">Traffic</h4>
-                    <div class="small text-muted">November 2017</div>
-                  </div>
-                  <!-- /.col-->
-                  <div class="col-sm-7 d-none d-md-block">
-                    <button class="btn btn-primary float-right" type="button">
-                      <i class="icon-cloud-download"></i>
-                    </button>
-                    <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
-                      <label class="btn btn-outline-secondary">
-                        <input id="option1" type="radio" name="options" autocomplete="off"> Day
-                      </label>
-                      <label class="btn btn-outline-secondary active">
-                        <input id="option2" type="radio" name="options" autocomplete="off" checked=""> Month
-                      </label>
-                      <label class="btn btn-outline-secondary">
-                        <input id="option3" type="radio" name="options" autocomplete="off"> Year
-                      </label>
-                    </div>
-                  </div>
-                  <!-- /.col-->
-                </div>
-                <!-- /.row-->
-                <div class="chart-wrapper" style="height:300px;margin-top:40px;">
-                  <canvas class="chart" id="main-chart" height="300"></canvas>
-                </div>
-              </div>
-              <div class="card-footer">
-                <div class="row text-center">
-                  <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                    <div class="text-muted">Visits</div>
-                    <strong>29.703 Users (40%)</strong>
-                    <div class="progress progress-xs mt-2">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                    <div class="text-muted">Unique</div>
-                    <strong>24.093 Users (20%)</strong>
-                    <div class="progress progress-xs mt-2">
-                      <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                    <div class="text-muted">Pageviews</div>
-                    <strong>78.706 Views (60%)</strong>
-                    <div class="progress progress-xs mt-2">
-                      <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                    <div class="text-muted">New Users</div>
-                    <strong>22.123 Users (80%)</strong>
-                    <div class="progress progress-xs mt-2">
-                      <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md mb-sm-2 mb-0">
-                    <div class="text-muted">Bounce Rate</div>
-                    <strong>40.15%</strong>
-                    <div class="progress progress-xs mt-2">
-                      <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /.card-->
-            <div class="row">
-              <div class="col-sm-6 col-lg-3">
-                <div class="brand-card">
-                  <div class="brand-card-header bg-facebook">
-                    <i class="fa fa-facebook"></i>
-                    <div class="chart-wrapper">
-                      <canvas id="social-box-chart-1" height="90"></canvas>
-                    </div>
-                  </div>
-                  <div class="brand-card-body">
-                    <div>
-                      <div class="text-value">89k</div>
-                      <div class="text-uppercase text-muted small">friends</div>
-                    </div>
-                    <div>
-                      <div class="text-value">459</div>
-                      <div class="text-uppercase text-muted small">feeds</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
-                <div class="brand-card">
-                  <div class="brand-card-header bg-twitter">
-                    <i class="fa fa-twitter"></i>
-                    <div class="chart-wrapper">
-                      <canvas id="social-box-chart-2" height="90"></canvas>
-                    </div>
-                  </div>
-                  <div class="brand-card-body">
-                    <div>
-                      <div class="text-value">973k</div>
-                      <div class="text-uppercase text-muted small">followers</div>
-                    </div>
-                    <div>
-                      <div class="text-value">1.792</div>
-                      <div class="text-uppercase text-muted small">tweets</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
-                <div class="brand-card">
-                  <div class="brand-card-header bg-linkedin">
-                    <i class="fa fa-linkedin"></i>
-                    <div class="chart-wrapper">
-                      <canvas id="social-box-chart-3" height="90"></canvas>
-                    </div>
-                  </div>
-                  <div class="brand-card-body">
-                    <div>
-                      <div class="text-value">500+</div>
-                      <div class="text-uppercase text-muted small">contacts</div>
-                    </div>
-                    <div>
-                      <div class="text-value">292</div>
-                      <div class="text-uppercase text-muted small">feeds</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-              <div class="col-sm-6 col-lg-3">
-                <div class="brand-card">
-                  <div class="brand-card-header bg-google-plus">
-                    <i class="fa fa-google-plus"></i>
-                    <div class="chart-wrapper">
-                      <canvas id="social-box-chart-4" height="90"></canvas>
-                    </div>
-                  </div>
-                  <div class="brand-card-body">
-                    <div>
-                      <div class="text-value">894</div>
-                      <div class="text-uppercase text-muted small">followers</div>
-                    </div>
-                    <div>
-                      <div class="text-value">92</div>
-                      <div class="text-uppercase text-muted small">circles</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-            </div>
-            <!-- /.row-->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header">Traffic & Sales</div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <div class="callout callout-info">
-                              <small class="text-muted">New Clients</small>
-                              <br>
-                              <strong class="h4">9,123</strong>
-                              <div class="chart-wrapper">
-                                <canvas id="sparkline-chart-1" width="100" height="30"></canvas>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- /.col-->
-                          <div class="col-sm-6">
-                            <div class="callout callout-danger">
-                              <small class="text-muted">Recuring Clients</small>
-                              <br>
-                              <strong class="h4">22,643</strong>
-                              <div class="chart-wrapper">
-                                <canvas id="sparkline-chart-2" width="100" height="30"></canvas>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- /.col-->
-                        </div>
-                        <!-- /.row-->
-                        <hr class="mt-0">
-                        <div class="progress-group mb-4">
-                          <div class="progress-group-prepend">
-                            <span class="progress-group-text">Monday</span>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 34%" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group mb-4">
-                          <div class="progress-group-prepend">
-                            <span class="progress-group-text">Tuesday</span>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 94%" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group mb-4">
-                          <div class="progress-group-prepend">
-                            <span class="progress-group-text">Wednesday</span>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group mb-4">
-                          <div class="progress-group-prepend">
-                            <span class="progress-group-text">Thursday</span>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group mb-4">
-                          <div class="progress-group-prepend">
-                            <span class="progress-group-text">Friday</span>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 73%" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group mb-4">
-                          <div class="progress-group-prepend">
-                            <span class="progress-group-text">Saturday</span>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 53%" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group mb-4">
-                          <div class="progress-group-prepend">
-                            <span class="progress-group-text">Sunday</span>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 9%" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 69%" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.col-->
-                      <div class="col-sm-6">
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <div class="callout callout-warning">
-                              <small class="text-muted">Pageviews</small>
-                              <br>
-                              <strong class="h4">78,623</strong>
-                              <div class="chart-wrapper">
-                                <canvas id="sparkline-chart-3" width="100" height="30"></canvas>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- /.col-->
-                          <div class="col-sm-6">
-                            <div class="callout callout-success">
-                              <small class="text-muted">Organic</small>
-                              <br>
-                              <strong class="h4">49,123</strong>
-                              <div class="chart-wrapper">
-                                <canvas id="sparkline-chart-4" width="100" height="30"></canvas>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- /.col-->
-                        </div>
-                        <!-- /.row-->
-                        <hr class="mt-0">
-                        <div class="progress-group">
-                          <div class="progress-group-header">
-                            <i class="icon-user progress-group-icon"></i>
-                            <div>Male</div>
-                            <div class="ml-auto font-weight-bold">43%</div>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group mb-5">
-                          <div class="progress-group-header">
-                            <i class="icon-user-female progress-group-icon"></i>
-                            <div>Female</div>
-                            <div class="ml-auto font-weight-bold">37%</div>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group">
-                          <div class="progress-group-header align-items-end">
-                            <i class="icon-globe progress-group-icon"></i>
-                            <div>Organic Search</div>
-                            <div class="ml-auto font-weight-bold mr-2">191.235</div>
-                            <div class="text-muted small">(56%)</div>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group">
-                          <div class="progress-group-header align-items-end">
-                            <i class="icon-social-facebook progress-group-icon"></i>
-                            <div>Facebook</div>
-                            <div class="ml-auto font-weight-bold mr-2">51.223</div>
-                            <div class="text-muted small">(15%)</div>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group">
-                          <div class="progress-group-header align-items-end">
-                            <i class="icon-social-twitter progress-group-icon"></i>
-                            <div>Twitter</div>
-                            <div class="ml-auto font-weight-bold mr-2">37.564</div>
-                            <div class="text-muted small">(11%)</div>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 11%" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="progress-group">
-                          <div class="progress-group-header align-items-end">
-                            <i class="icon-social-linkedin progress-group-icon"></i>
-                            <div>LinkedIn</div>
-                            <div class="ml-auto font-weight-bold mr-2">27.319</div>
-                            <div class="text-muted small">(8%)</div>
-                          </div>
-                          <div class="progress-group-bars">
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 8%" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- /.col-->
-                    </div>
-                    <!-- /.row-->
-                    <br>
-                    <table class="table table-responsive-sm table-hover table-outline mb-0">
-                      <thead class="thead-light">
-                        <tr>
-                          <th class="text-center">
-                            <i class="icon-people"></i>
-                          </th>
-                          <th>User</th>
-                          <th class="text-center">Country</th>
-                          <th>Usage</th>
-                          <th class="text-center">Payment Method</th>
-                          <th>Activity</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-center">
-                            <div class="avatar">
-                              <img class="img-avatar" src="img/avatars/1.jpg" alt="admin@bootstrapmaster.com">
-                              <span class="avatar-status badge-success"></span>
-                            </div>
-                          </td>
-                          <td>
-                            <div>Yiorgos Avraamu</div>
-                            <div class="small text-muted">
-                              <span>New</span> | Registered: Jan 1, 2015</div>
-                          </td>
-                          <td class="text-center">
-                            <i class="flag-icon flag-icon-us h4 mb-0" id="us" title="us"></i>
-                          </td>
-                          <td>
-                            <div class="clearfix">
-                              <div class="float-left">
-                                <strong>50%</strong>
-                              </div>
-                              <div class="float-right">
-                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                              </div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <i class="fa fa-cc-mastercard" style="font-size:24px"></i>
-                          </td>
-                          <td>
-                            <div class="small text-muted">Last login</div>
-                            <strong>10 sec ago</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <div class="avatar">
-                              <img class="img-avatar" src="img/avatars/2.jpg" alt="admin@bootstrapmaster.com">
-                              <span class="avatar-status badge-danger"></span>
-                            </div>
-                          </td>
-                          <td>
-                            <div>Avram Tarasios</div>
-                            <div class="small text-muted">
-                              <span>Recurring</span> | Registered: Jan 1, 2015</div>
-                          </td>
-                          <td class="text-center">
-                            <i class="flag-icon flag-icon-br h4 mb-0" id="br" title="br"></i>
-                          </td>
-                          <td>
-                            <div class="clearfix">
-                              <div class="float-left">
-                                <strong>10%</strong>
-                              </div>
-                              <div class="float-right">
-                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                              </div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <i class="fa fa-cc-visa" style="font-size:24px"></i>
-                          </td>
-                          <td>
-                            <div class="small text-muted">Last login</div>
-                            <strong>5 minutes ago</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <div class="avatar">
-                              <img class="img-avatar" src="img/avatars/3.jpg" alt="admin@bootstrapmaster.com">
-                              <span class="avatar-status badge-warning"></span>
-                            </div>
-                          </td>
-                          <td>
-                            <div>Quintin Ed</div>
-                            <div class="small text-muted">
-                              <span>New</span> | Registered: Jan 1, 2015</div>
-                          </td>
-                          <td class="text-center">
-                            <i class="flag-icon flag-icon-in h4 mb-0" id="in" title="in"></i>
-                          </td>
-                          <td>
-                            <div class="clearfix">
-                              <div class="float-left">
-                                <strong>74%</strong>
-                              </div>
-                              <div class="float-right">
-                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                              </div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 74%" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <i class="fa fa-cc-stripe" style="font-size:24px"></i>
-                          </td>
-                          <td>
-                            <div class="small text-muted">Last login</div>
-                            <strong>1 hour ago</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <div class="avatar">
-                              <img class="img-avatar" src="img/avatars/4.jpg" alt="admin@bootstrapmaster.com">
-                              <span class="avatar-status badge-secondary"></span>
-                            </div>
-                          </td>
-                          <td>
-                            <div>Enéas Kwadwo</div>
-                            <div class="small text-muted">
-                              <span>New</span> | Registered: Jan 1, 2015</div>
-                          </td>
-                          <td class="text-center">
-                            <i class="flag-icon flag-icon-fr h4 mb-0" id="fr" title="fr"></i>
-                          </td>
-                          <td>
-                            <div class="clearfix">
-                              <div class="float-left">
-                                <strong>98%</strong>
-                              </div>
-                              <div class="float-right">
-                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                              </div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <i class="fa fa-paypal" style="font-size:24px"></i>
-                          </td>
-                          <td>
-                            <div class="small text-muted">Last login</div>
-                            <strong>Last month</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <div class="avatar">
-                              <img class="img-avatar" src="img/avatars/5.jpg" alt="admin@bootstrapmaster.com">
-                              <span class="avatar-status badge-success"></span>
-                            </div>
-                          </td>
-                          <td>
-                            <div>Agapetus Tadeáš</div>
-                            <div class="small text-muted">
-                              <span>New</span> | Registered: Jan 1, 2015</div>
-                          </td>
-                          <td class="text-center">
-                            <i class="flag-icon flag-icon-es h4 mb-0" id="es" title="es"></i>
-                          </td>
-                          <td>
-                            <div class="clearfix">
-                              <div class="float-left">
-                                <strong>22%</strong>
-                              </div>
-                              <div class="float-right">
-                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                              </div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <i class="fa fa-google-wallet" style="font-size:24px"></i>
-                          </td>
-                          <td>
-                            <div class="small text-muted">Last login</div>
-                            <strong>Last week</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <div class="avatar">
-                              <img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
-                              <span class="avatar-status badge-danger"></span>
-                            </div>
-                          </td>
-                          <td>
-                            <div>Friderik Dávid</div>
-                            <div class="small text-muted">
-                              <span>New</span> | Registered: Jan 1, 2015</div>
-                          </td>
-                          <td class="text-center">
-                            <i class="flag-icon flag-icon-pl h4 mb-0" id="pl" title="pl"></i>
-                          </td>
-                          <td>
-                            <div class="clearfix">
-                              <div class="float-left">
-                                <strong>43%</strong>
-                              </div>
-                              <div class="float-right">
-                                <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
-                              </div>
-                            </div>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <i class="fa fa-cc-amex" style="font-size:24px"></i>
-                          </td>
-                          <td>
-                            <div class="small text-muted">Last login</div>
-                            <strong>Yesterday</strong>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col-->
-            </div>
-            <!-- /.row-->
+@include('layouts.sidebar1')
+<div class="content-wrapper">      
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Dashboard
+      <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Dashboard</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h3>150</h3>
+
+            <p>New Orders</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+            <p>Bounce Rate</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+          <div class="inner">
+            <h3>44</h3>
+
+            <p>User Registrations</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-person-add"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+          <div class="inner">
+            <h3>65</h3>
+
+            <p>Unique Visitors</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+    </div>
+    <!-- /.row -->
+    <!-- Main row -->
+    <div class="row">
+      <!-- Left col -->
+      <section class="col-lg-7 connectedSortable">
+        <!-- Custom tabs (Charts with tabs)-->
+        <div class="nav-tabs-custom">
+          <!-- Tabs within a box -->
+          <ul class="nav nav-tabs pull-right">
+            <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
+            <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
+            <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+          </ul>
+          <div class="tab-content no-padding">
+            <!-- Morris chart - Sales -->
+            <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+            <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
           </div>
         </div>
-      </main>
-    
+        <!-- /.nav-tabs-custom -->
+
+        <!-- Chat box -->
+        <div class="box box-success">
+          <div class="box-header">
+            <i class="fa fa-comments-o"></i>
+
+            <h3 class="box-title">Chat</h3>
+
+            <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+              <div class="btn-group" data-toggle="btn-toggle">
+                <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i>
+                </button>
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="box-body chat" id="chat-box">
+            <!-- chat item -->
+            <div class="item">
+              <img src="{{asset('template/dist/img/user4-128x128.jpg')}}" alt="user image" class="online">
+
+              <p class="message">
+                <a href="#" class="name">
+                  <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
+                  Mike Doe
+                </a>
+                I would like to meet you to discuss the latest news about
+                the arrival of the new theme. They say it is going to be one the
+                best themes on the market
+              </p>
+              <div class="attachment">
+                <h4>Attachments:</h4>
+
+                <p class="filename">
+                  Theme-thumbnail-image.jpg
+                </p>
+
+                <div class="pull-right">
+                  <button type="button" class="btn btn-primary btn-sm btn-flat">Open</button>
+                </div>
+              </div>
+              <!-- /.attachment -->
+            </div>
+            <!-- /.item -->
+            <!-- chat item -->
+            <div class="item">
+              <img src="{{asset('template/dist/img/user3-128x128.jpg')}}" alt="user image" class="offline">
+
+              <p class="message">
+                <a href="#" class="name">
+                  <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:15</small>
+                  Alexander Pierce
+                </a>
+                I would like to meet you to discuss the latest news about
+                the arrival of the new theme. They say it is going to be one the
+                best themes on the market
+              </p>
+            </div>
+            <!-- /.item -->
+            <!-- chat item -->
+            <div class="item">
+              <img src="{{asset('template/dist/img/user2-160x160.jpg')}}" alt="user image" class="offline">
+
+              <p class="message">
+                <a href="#" class="name">
+                  <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:30</small>
+                  Susan Doe
+                </a>
+                I would like to meet you to discuss the latest news about
+                the arrival of the new theme. They say it is going to be one the
+                best themes on the market
+              </p>
+            </div>
+            <!-- /.item -->
+          </div>
+          <!-- /.chat -->
+          <div class="box-footer">
+            <div class="input-group">
+              <input class="form-control" placeholder="Type message...">
+
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.box (chat box) -->
+
+        <!-- TO DO List -->
+        <div class="box box-primary">
+          <div class="box-header">
+            <i class="ion ion-clipboard"></i>
+
+            <h3 class="box-title">To Do List</h3>
+
+            <div class="box-tools pull-right">
+              <ul class="pagination pagination-sm inline">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <ul class="todo-list">
+              <li>
+                <!-- drag handle -->
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                <!-- checkbox -->
+                <input type="checkbox" value="">
+                <!-- todo text -->
+                <span class="text">Design a nice theme</span>
+                <!-- Emphasis label -->
+                <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                <!-- General tools such as edit or delete-->
+                <div class="tools">
+                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-trash-o"></i>
+                </div>
+              </li>
+              <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                <input type="checkbox" value="">
+                <span class="text">Make the theme responsive</span>
+                <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                <div class="tools">
+                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-trash-o"></i>
+                </div>
+              </li>
+              <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                <input type="checkbox" value="">
+                <span class="text">Let theme shine like a star</span>
+                <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                <div class="tools">
+                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-trash-o"></i>
+                </div>
+              </li>
+              <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                <input type="checkbox" value="">
+                <span class="text">Let theme shine like a star</span>
+                <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                <div class="tools">
+                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-trash-o"></i>
+                </div>
+              </li>
+              <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                <input type="checkbox" value="">
+                <span class="text">Check your messages and notifications</span>
+                <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                <div class="tools">
+                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-trash-o"></i>
+                </div>
+              </li>
+              <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                <input type="checkbox" value="">
+                <span class="text">Let theme shine like a star</span>
+                <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
+                <div class="tools">
+                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-trash-o"></i>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer clearfix no-border">
+            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+          </div>
+        </div>
+        <!-- /.box -->
+
+        <!-- quick email widget -->
+        <div class="box box-info">
+          <div class="box-header">
+            <i class="fa fa-envelope"></i>
+
+            <h3 class="box-title">Quick Email</h3>
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+              <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                <i class="fa fa-times"></i></button>
+            </div>
+            <!-- /. tools -->
+          </div>
+          <div class="box-body">
+            <form action="#" method="post">
+              <div class="form-group">
+                <input type="email" class="form-control" name="emailto" placeholder="Email to:">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" placeholder="Subject">
+              </div>
+              <div>
+                <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="box-footer clearfix">
+            <button type="button" class="pull-right btn btn-default" id="sendEmail">Send
+              <i class="fa fa-arrow-circle-right"></i></button>
+          </div>
+        </div>
+
+      </section>
+      <!-- /.Left col -->
+      <!-- right col (We are only adding the ID to make the widgets sortable)-->
+      <section class="col-lg-5 connectedSortable">
+
+        <!-- Map box -->
+        <div class="box box-solid bg-light-blue-gradient">
+          <div class="box-header">
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+              <button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range">
+                <i class="fa fa-calendar"></i></button>
+              <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
+                <i class="fa fa-minus"></i></button>
+            </div>
+            <!-- /. tools -->
+
+            <i class="fa fa-map-marker"></i>
+
+            <h3 class="box-title">
+              Visitors
+            </h3>
+          </div>
+          <div class="box-body">
+            <div id="world-map" style="height: 250px; width: 100%;"></div>
+          </div>
+          <!-- /.box-body-->
+          <div class="box-footer no-border">
+            <div class="row">
+              <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                <div id="sparkline-1"></div>
+                <div class="knob-label">Visitors</div>
+              </div>
+              <!-- ./col -->
+              <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                <div id="sparkline-2"></div>
+                <div class="knob-label">Online</div>
+              </div>
+              <!-- ./col -->
+              <div class="col-xs-4 text-center">
+                <div id="sparkline-3"></div>
+                <div class="knob-label">Exists</div>
+              </div>
+              <!-- ./col -->
+            </div>
+            <!-- /.row -->
+          </div>
+        </div>
+        <!-- /.box -->
+
+        <!-- solid sales graph -->
+        <div class="box box-solid bg-teal-gradient">
+          <div class="box-header">
+            <i class="fa fa-th"></i>
+
+            <h3 class="box-title">Sales Graph</h3>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div class="box-body border-radius-none">
+            <div class="chart" id="line-chart" style="height: 250px;"></div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer no-border">
+            <div class="row">
+              <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                <div class="knob-label">Mail-Orders</div>
+              </div>
+              <!-- ./col -->
+              <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                <div class="knob-label">Online</div>
+              </div>
+              <!-- ./col -->
+              <div class="col-xs-4 text-center">
+                <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
+
+                <div class="knob-label">In-Store</div>
+              </div>
+              <!-- ./col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+
+        <!-- Calendar -->
+        <div class="box box-solid bg-green-gradient">
+          <div class="box-header">
+            <i class="fa fa-calendar"></i>
+
+            <h3 class="box-title">Calendar</h3>
+            <!-- tools box -->
+            <div class="pull-right box-tools">
+              <!-- button with a dropdown -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-bars"></i></button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                  <li><a href="#">Add new event</a></li>
+                  <li><a href="#">Clear events</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">View calendar</a></li>
+                </ul>
+              </div>
+              <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+              </button>
+            </div>
+            <!-- /. tools -->
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body no-padding">
+            <!--The calendar -->
+            <div id="calendar" style="width: 100%"></div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer text-black">
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- Progress bars -->
+                <div class="clearfix">
+                  <span class="pull-left">Task #1</span>
+                  <small class="pull-right">90%</small>
+                </div>
+                <div class="progress xs">
+                  <div class="progress-bar progress-bar-green" style="width: 90%;"></div>
+                </div>
+
+                <div class="clearfix">
+                  <span class="pull-left">Task #2</span>
+                  <small class="pull-right">70%</small>
+                </div>
+                <div class="progress xs">
+                  <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
+                </div>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-6">
+                <div class="clearfix">
+                  <span class="pull-left">Task #3</span>
+                  <small class="pull-right">60%</small>
+                </div>
+                <div class="progress xs">
+                  <div class="progress-bar progress-bar-green" style="width: 60%;"></div>
+                </div>
+
+                <div class="clearfix">
+                  <span class="pull-left">Task #4</span>
+                  <small class="pull-right">40%</small>
+                </div>
+                <div class="progress xs">
+                  <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
+                </div>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+        </div>
+        <!-- /.box -->
+
+      </section>
+      <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+  </section>
+  <!-- /.content -->
+</div>
 @endsection

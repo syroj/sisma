@@ -50,7 +50,7 @@ class SekolahController extends Controller
 		];
 		// return $data;
 		$save=kurikulum::insert($data);
-		return redirect('/kbm');
+		return back()->with('status','Data Berhasil Ditambahkan');
 	}
 	public function show_kurikulum($id){
 		$data=kurikulum::find($id);
@@ -80,15 +80,14 @@ class SekolahController extends Controller
 		];
 		// dd($data);
 		tahun_ajaran::insert($data);
-		return redirect('/kbm');
+		return back()->with('status','Data Berhasil Ditambahkan');
 	}
 
 	// sekolah
 	public function AddSekolah(Request $request){
 		$data=$request->except('_token');
 		sekolah::insert($data);
-		return redirect('/setting');
-		dd($data);
+		return back()->with('status','Data Berhasil Ditambahkan');
 	}
 	public function editsekolah($id){
 		$data=sekolah::find($id);
@@ -98,11 +97,11 @@ class SekolahController extends Controller
 	public function savesekolah(Request $request,$id){
 		$data=$request->except('_token');
 		$save=sekolah::where('id',$id)->update($data);
-		return redirect('/setting');
+		return redirect('/setting')->with('status','Data Berhasil Dirubah');
 	}
 	public function deletesekolah($id){
 		$delete=sekolah::where('id',$id)->delete();
-		return redirect('/setting');
+		return redirect('/setting')->with('status','Data Berhasil Dihapus');
 	}
 	
 }

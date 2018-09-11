@@ -19,11 +19,29 @@ class SiswaController extends Controller
     public function index(){
         $nis=siswa::max('nis');
         $newNis=$nis+1;
-        $data=siswa::all();
+        $data=siswa::orderby('status_id','asc')->paginate(10);
     	return view('data_siswa')->with([
             'siswa'=>$data,
             'nis'=>$newNis
             ]);
+    }
+    public function search(Request $request){
+        $key=$request->search;
+        if ($key==null) {
+            return redirect()->route('data_siswa')->with(['status'=>'Input Pencarian tidak boleh kosong']);
+        }
+        $nis=siswa::max('nis');
+        $newNis=$nis+1;
+        $siswa=siswa::where('nama','like','%'.$key.'%')->orwhere('nis','like','%'.$key.'%')->paginate(10);
+        // dd($siswa);
+        $siswa->appends($request->only('search'));
+        return view('data_siswa',compact('siswa',$siswa, 'nis',$newNis));
+    }
+    public function bystatus($key){
+        $nis=siswa::max('nis');
+        $newNis=$nis+1;
+        $siswa=siswa::where('status_id',$key)->paginate(10);
+        return view('data_siswa',compact('siswa',$siswa, 'nis',$newNis));
     }
     public function SiswaBaru(Request $request){
         $status=status::findOrFail(1);
@@ -98,7 +116,7 @@ class SiswaController extends Controller
         $ayah=$siswa->keluarga()->create($data_ayah);
         $ibu=$siswa->keluarga()->create($data_ibu);
         $asal=$siswa->asal_sekolah()->create($data_asalSekolah);
-        return redirect()->route('data_siswa');
+        return redirect()->route('data_siswa')->with(['status'=>'Data Berhasil Disimpan']);
     }
     public function ProfilSiswa($id){
         $siswa=siswa::findOrFail($id);

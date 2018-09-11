@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\status;
 use App\role;
+use App\struktur;
 
 
 class AdminController extends Controller
@@ -50,7 +51,9 @@ class AdminController extends Controller
 		return redirect('/setting');
 	}
 	// struktur
-	public function struktur(){
-		
+	public function struktur()
+	{
+		$struktur=struktur::all();
+		return view('struktur',compact($struktur));
 	}
 }

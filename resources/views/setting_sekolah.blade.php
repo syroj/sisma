@@ -3,6 +3,14 @@
 @include('layouts.sidebar')
 <div class="main">
 	<!-- <div class="container-fluid"> -->
+		@if(session('status'))
+	    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+	        <strong>{{session('status')}}</strong>
+	        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+	        <span aria-hidden="true">×</span>
+	        </button>
+	    </div>
+	    @endif
 		<div class="row">
 			<div class="col-md-12">
 			<div class="card">

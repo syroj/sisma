@@ -20,7 +20,16 @@
                 <a class="nav-link" data-toggle="tab" href="#akademik" role="tab" aria-controls="profile"><span><i class="fa fa-book"></i></span> Akademik</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#kepesantrenan" role="tab" aria-controls="profile"><span><i class="fa fa-gears"></i></span> Kepesantrenan</a>
+                <a class="nav-link" data-toggle="tab" href="#kepesantrenan" role="tab"><span><i class="fa fa-university"></i></span> Kepesantrenan</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#prestasi" role="tab"><span><i class="fa fa-trophy"></i></span> Prestasi</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#pelanggaran" role="tab"><span><i class="fa fa-bomb"></i></span> Pelanggaran</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#catatan" role="tab"><span><i class="fa fa-file-text-o"></i></span> Catatan</a>
                 </li>
             </ul>
         </div>
@@ -91,7 +100,7 @@
                                     <td>Alamat</td>
                                     <td colspan="3">
                                     @foreach($alamat as $al)
-                                    Dusun {{$al->dusun}} Kelurahan {{$al->desa}} Kecamatan {{$al->kecamatan}} Kabupaten {{$al->kabupaten}} 
+                                    {{$al->dusun}} Kelurahan {{$al->desa}} Kecamatan {{$al->kecamatan}} Kabupaten {{$al->kabupaten}} 
                                     </br>Provinsi {{$al->provinsi}}
                                     </br>Kode Pos {{$al->kode_pos}}
                                     @endforeach
@@ -165,6 +174,15 @@
                 </div>
                 <div class="tab-pane" id="kepesantrenan" role="tabpanel">
                     halaman kepesantrenan
+                </div>
+                <div class="tab-pane" id="prestasi" role="tabpanel">
+                    halaman prestasi
+                </div>
+                <div class="tab-pane" id="pelanggaran" role="tabpanel">
+                    halaman pelanggaran
+                </div>
+                <div class="tab-pane" id="catatan" role="tabpanel">
+                    halaman catatan
                 </div>
             </div>
         </div>

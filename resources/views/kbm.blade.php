@@ -1,37 +1,44 @@
-@extends('layouts.app2')
+@extends('layouts.app1')
 @section('content')
-@include('layouts.sidebar')
-<div class="main">
-		<div class="card">
-			<div class="card-header">
-				<ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#tahunajaran" role="tab" aria-controls="home">
-                      <i class="fa fa-calendar"></i> Tahun Ajaran</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#Kurikulum" role="tab" aria-controls="profile">
-                      <i class="fa fa-list"></i> Kurikulum</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#peminatan" role="tab" aria-controls="messages">
-                      <i class="fa fa-users"></i> Jurusan</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#kelas" role="tab" aria-controls="messages">
-                      <i class="fa fa-building"></i> Kelas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#guru" role="tab" aria-controls="messages">
-                      <i class="fa fa-user-circle"></i> Guru</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#pelajaran" role="tab" aria-controls="profile">
-                      <i class="fa fa-book"></i> Pelajaran</a>
-                  </li>                  
-                </ul>
-			</div>
-			<div class="card-body">
+@include('layouts.sidebar1')
+<div class="content-wrapper">
+	@if(session('status'))
+	    <div class="alert alert-info alert-dismissible">
+	        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	        <h4><i class="icon fa fa-info"></i> Alert!  {{session('status')}}   </h4>
+	    </div>
+    @endif
+    <div class="content">
+		<div class="box"style="margin-top: -1em;">
+			<div class="box-body">
+				<div class="nav-tabs-custom">
+					<ul class="nav nav-tabs" role="tablist">
+	                  <li class="active">
+	                    <a data-toggle="tab" href="#tahunajaran" role="tab" aria-controls="home">
+	                      <i class="fa fa-calendar"></i> Tahun Ajaran</a>
+	                  </li>
+	                  <li class="">
+	                    <a data-toggle="tab" href="#Kurikulum" role="tab" aria-controls="profile">
+	                      <i class="fa fa-list"></i> Kurikulum</a>
+	                  </li>
+	                  <li class="">
+	                    <a data-toggle="tab" href="#peminatan" role="tab" aria-controls="messages">
+	                      <i class="fa fa-sitemap"></i> Jurusan</a>
+	                  </li>
+	                  <li class="">
+	                    <a data-toggle="tab" href="#kelas" role="tab" aria-controls="messages">
+	                      <i class="fa fa-building"></i> Kelas</a>
+	                  </li>
+	                  <li class="">
+	                    <a data-toggle="tab" href="#guru" role="tab" aria-controls="messages">
+	                      <i class="fa fa-user-circle"></i> Guru</a>
+	                  </li>
+	                  <li class="">
+	                    <a data-toggle="tab" href="#pelajaran" role="tab" aria-controls="profile">
+	                      <i class="fa fa-book"></i> Pelajaran</a>
+	                  </li>                  
+	                </ul>
+				</div>
 	            <div class="tab-content">
 	              <div class="tab-pane active" id="tahunajaran" role="tabpanel">
 	              	<form method="POST" action="{{url('add_ta')}}">
@@ -126,35 +133,35 @@
 	              		<?php
 	              		$x=1;
 	              		?>
-	              		<div class="col col-8">
-	              		@if(count($kurikulum)>0)
-			              	<table class="table table-bordered table-sm" id="tab_kurikulum" style="width:100%;">
-			              		<thead>
-				              		<th>No</th>
-				              		<th>Kurikulum</th>
-				              		<td>Deskripsi</td>
-				              		<th>Action</th>
-			              		</thead>
-			              		<tbody>
-			              		@foreach($kurikulum as $k)
-								<tr>
-			              			<td>{{$x++}}</td>
-			              			<td>{{$k->nama}}</td>
-			              			<td>{{$k->deskripsi}}</td>
-			              			<td style="width: 80px;">
-		              					<a href="{{url('kurikulum.edit')}}/{{$k->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-		              					<a href="{{url('kurikulum.delete')}}/{{$k->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-			              			</td>
-								</tr>
-								@endforeach
-			              		</tbody>
-			              	</table>
-		              	@else
-		              	<h3>Belum ada data</h3>
-		              	@endif	
+	              		<div class="col col-md-8">
+		              		@if(count($kurikulum)>0)
+				              	<table class="table table-bordered table-sm" id="tab_kurikulum">
+				              		<thead>
+					              		<th>No</th>
+					              		<th>Kurikulum</th>
+					              		<td>Deskripsi</td>
+					              		<th>Action</th>
+				              		</thead>
+				              		<tbody>
+				              		@foreach($kurikulum as $k)
+									<tr>
+				              			<td>{{$x++}}</td>
+				              			<td>{{$k->nama}}</td>
+				              			<td>{{$k->deskripsi}}</td>
+				              			<td>
+			              					<a href="{{url('kurikulum.edit')}}/{{$k->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+			              					<a href="{{url('kurikulum.delete')}}/{{$k->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+				              			</td>
+									</tr>
+									@endforeach
+				              		</tbody>
+				              	</table>
+			              	@else
+			              	<h3>Belum ada data</h3>
+			              	@endif	
 	              		</div>
 	              		<div class="col col-md-4">
-			              	<form class="form form-inline" action="{{url('addkurikulum')}}" method="POST">
+			              	<form class="form" action="{{url('addkurikulum')}}" method="POST">
 			              		{{csrf_field()}}
 			              		<table class="table table-bordered">
 			              			<tr>
@@ -193,12 +200,6 @@
 	            </div>
 			</div>
 		</div>		
+    </div>
 </div>
 @endsection
-@push('scripts')
-<script type="text/javascript">
-	$(document).ready(function(){
-		// $('#tab_kurikulum').DataTable();
-	});
-</script>
-@endpush

@@ -16,4 +16,7 @@ class status extends Model
     public function siswa(){
         return $this->hasmany(siswa::class);
     }
+    public function staf(){
+    	return $this->hasone(staf::class);
+    }
 }

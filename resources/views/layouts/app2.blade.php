@@ -6,7 +6,7 @@
 * @link https://coreui.io
 * Copyright (c) 2018 creativeLabs Łukasz Holeczek
 * Licensed under MIT (https://coreui.io/license)
-Application by: syroj
+* Application by: syrojuddin hadi
 -->
 
 <html lang="en">
@@ -27,10 +27,8 @@ Application by: syroj
     <link href="{{asset('src')}}/css/style.css" rel="stylesheet">
     <link href="{{asset('src')}}/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <!-- datatable -->
-    <link href="{{asset('dt')}}/datatables.css" rel="stylesheet">
-    <link href="{{asset('dt/DataTables/css')}}/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="{{asset('dt/DataTables/css')}}/jquery.dataTables.css" rel="stylesheet">
-    <link href="{{asset('dt/DataTables/css')}}/dataTables.jqueryui.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables/jquery.dataTables.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
   </head>
   @guest
   <body class="app flex-row align-items-center">
@@ -134,15 +132,13 @@ Application by: syroj
     <script src="{{asset('src')}}/node_modules/pace-progress/pace.min.js"></script>
     <script src="{{asset('src')}}/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
     <script src="{{asset('src')}}/node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
-
     <!-- Plugins and scripts required by index view-->
     <script src="{{asset('src')}}/node_modules/chart.js/dist/Chart.min.js"></script>
     <script src="{{asset('src')}}/node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js"></script>
     <script src="{{asset('src')}}/js/main.js"></script>
     <!-- datatable -->
-    <script type="text/javascript" src="{{asset('dt')}}/datatables.js"></script>
-    <script type="text/javascript" src="{{asset('dt/DataTables/js')}}/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="{{asset('dt/DataTables/js')}}/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
     <!-- script data table siswa dan guru-->
     @stack('scripts')
   </body>

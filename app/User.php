@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 use App\struktur;
+use App\staf;
 
 class User extends Authenticatable
 {
@@ -32,5 +33,8 @@ class User extends Authenticatable
     
     public function struktur(){
         return $this->belongstomany(struktur::class);
+    }
+    public function staf(){
+        return $this->hasone(staf::class);
     }
 }
